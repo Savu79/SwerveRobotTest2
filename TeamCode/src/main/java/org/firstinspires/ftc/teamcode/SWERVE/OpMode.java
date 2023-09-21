@@ -31,5 +31,14 @@ public class OpMode extends CommandOpMode {
         robot.read(drive);
         robot.write(drive);
         robot.loop(Pose, drive);
+
+        double loop = System.nanoTime();
+        //telemetry.addData("hz ", 1000000000 / (loop - loopTime));
+        telemetry.addData("SelectedServo: ", servonr);
+        telemetry.addData("offSet servo: ", offSetValue);
+        telemetry.addData("X: ", Pose.getX());
+        telemetry.addData("Y: ", Pose.getY());
+        telemetry.addData("H: ", Pose.getHeading());
+        loopTime = loop;
     }
 }
