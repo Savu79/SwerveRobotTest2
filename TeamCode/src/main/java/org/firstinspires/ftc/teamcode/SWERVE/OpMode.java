@@ -14,6 +14,7 @@ public class OpMode extends CommandOpMode {
     private HardwareSwerve robot = HardwareSwerve.getInstance();
     private DriveTrain drive;
     double[] offSetValue=new double[4];
+    double loopTime=0;
 
     @Override
     public void initialize(){
@@ -33,12 +34,8 @@ public class OpMode extends CommandOpMode {
         robot.loop(Pose, drive);
 
         double loop = System.nanoTime();
-        //telemetry.addData("hz ", 1000000000 / (loop - loopTime));
-        telemetry.addData("SelectedServo: ", servonr);
+        telemetry.addData("hz ", 1000000000 / (loop - loopTime));
         telemetry.addData("offSet servo: ", offSetValue);
-        telemetry.addData("X: ", Pose.getX());
-        telemetry.addData("Y: ", Pose.getY());
-        telemetry.addData("H: ", Pose.getHeading());
         loopTime = loop;
     }
 }
