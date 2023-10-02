@@ -82,4 +82,16 @@ public class HardwareSwerve {
     public void reset(DriveTrain drive) {
 
     }
+
+    public void testServo(DriveTrain drive, boolean poz) {
+        try {
+            if (poz) drive.testPozServo1();
+            else drive.testPozServo2();
+        } catch (Exception ignored){}
+    }
+    public void testMotors(DriveTrain drive, boolean on) {
+        try {
+            drive.testMotors(on);
+        } catch (Exception ignored){}
+    }
 }

@@ -76,6 +76,34 @@ public class DriveTrain implements DRIVETRAIN {
         for (SwerveModule m : modules) m.update();
     }
 
+    public void testPozServo1(){
+        ws= new double[]{0,0,0,0};
+        wa= new double[]{0,0,0,0};
+        for (int i = 0; i < 4; i++) {
+            SwerveModule m = modules[i];
+            m.setMotorPower(Math.abs(ws[i]));
+            m.setTargetRotation(wa[i]);
+        }
+    }
+    public void testPozServo2(){
+        ws= new double[]{0,0,0,0};
+        wa= new double[]{3.14,3.14,3.14,3.14};
+        for (int i = 0; i < 4; i++) {
+            SwerveModule m = modules[i];
+            m.setMotorPower(Math.abs(ws[i]));
+            m.setTargetRotation(wa[i]);
+        }
+    }
+    public void testMotors(boolean on){
+        if(on) ws= new double[]{1,1,1,1};
+        else ws= new double[]{0,0,0,0};
+        wa= new double[]{0,0,0,0};
+        for (int i = 0; i < 4; i++) {
+            SwerveModule m = modules[i];
+            m.setMotorPower(Math.abs(ws[i]));
+            m.setTargetRotation(wa[i]);
+        }
+    }
     public static double max(double... args){
         double max = args[0];
         for(double d : args){
@@ -83,6 +111,7 @@ public class DriveTrain implements DRIVETRAIN {
         }
         return max;
     }
+
     public static double norm(double angle){
         return angle%(2*3.14);
     }
