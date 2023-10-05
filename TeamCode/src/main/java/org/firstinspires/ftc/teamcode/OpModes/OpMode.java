@@ -63,6 +63,7 @@ public class OpMode extends CommandOpMode {
         telemetry.addData("X: ", Pose.position.x);
         telemetry.addData("Y: ", Pose.position.y);
         telemetry.addData("H: ", Pose.heading);
+        telemetry.update();
         loopTime = loop;
         //telemetry.update();
     }
