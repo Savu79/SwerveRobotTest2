@@ -34,7 +34,6 @@ public class SwerveModule {
     public static double GEAR_RATIO = 1 / (3.5 * 1.5 * 2); // output (wheel) speed / input (motor) speed
     public static final double TICKS_PER_REV = 28;  //MOTOR
     private double VoltageRotation=0;
-    private int voltageRot=0;
 
     private DcMotorEx motor; //MOTORUL CU ENCODER
     private CRServo servo; //SERVOUL
@@ -76,8 +75,8 @@ public class SwerveModule {
     }
 
     public void read() {
-        voltage = encoder.getVoltage();}
-
+        voltage = encoder.getVoltage();
+    }
 
 
     public void update() {
@@ -104,7 +103,7 @@ public class SwerveModule {
             wheelFlipped=false;
         }
 
-        error = normalizeRadians(targetS - currentS);
+        error = targetS - currentS;
 
         double power = Range.clip(rotationController.calculate(0, error), -MAX_SERVO, MAX_SERVO);
         if (Double.isNaN(power)) power = 0;
@@ -126,7 +125,7 @@ public class SwerveModule {
     }
 
     public double getTargetRotation() {
-        return targetS;
+        return this.targetS;
     }
 
     public double getModuleRotation(double Voltage) {

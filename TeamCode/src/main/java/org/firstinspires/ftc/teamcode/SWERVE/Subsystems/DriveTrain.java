@@ -51,14 +51,14 @@ public class DriveTrain implements DRIVETRAIN {
         double c = FWD-(RCW*(TRACKWIDTH/R));
         double d = FWD+(RCW*(TRACKWIDTH/R));
 
-        ws= new double []{Math.sqrt(b*b+c*c), Math.sqrt(b*b+d*d), Math.sqrt(a*a+d*d), Math.sqrt(a*a+c*c)};
-        wa= new double []{Math.atan2(b,c)*180/3.14, Math.atan2(b,d)*180/3.14, Math.atan2(a,d)*180/3.14, Math.atan2(a,c)*180/3.14};
+        this.ws= new double []{Math.sqrt(b*b+c*c), Math.sqrt(b*b+d*d), Math.sqrt(a*a+d*d), Math.sqrt(a*a+c*c)};
+        this.wa= new double []{Math.atan2(b,c)*180/3.14, Math.atan2(b,d)*180/3.14, Math.atan2(a,d)*180/3.14, Math.atan2(a,c)*180/3.14};
 
         //facem ca puterea maxima sa nu fie mai mare de 1, fara sa stricam proportiile si o trimitem catre module
-        double max = max(ws);
+        double max = max(this.ws);
         for(int i=0; i<4; i++)
             if(max>1)
-                ws[i]=ws[i]/max;
+                this.ws[i]=this.ws[i]/max;
     }
     public void read() {
         for (SwerveModule module : modules) module.read();
@@ -67,8 +67,8 @@ public class DriveTrain implements DRIVETRAIN {
     public void write() {
         for (int i = 0; i < 4; i++) {
             SwerveModule m = modules[i];
-            m.setMotorPower(Math.abs(ws[i]));
-            m.setTargetRotation(wa[i]);
+            m.setMotorPower(Math.abs(this.ws[i]));
+            m.setTargetRotation(this.wa[i]);
         }
     }
 
