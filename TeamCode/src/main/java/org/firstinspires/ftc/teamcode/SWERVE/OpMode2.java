@@ -8,8 +8,8 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 import org.firstinspires.ftc.teamcode.SWERVE.Subsystems.DriveTrain;
 
-@TeleOp(name= "SwerveTest")
-public class OpMode extends CommandOpMode {
+@TeleOp(name= "OpModeSavu")
+public class OpMode2 extends CommandOpMode {
 
     private HardwareSwerve robot = HardwareSwerve.getInstance();
     private DriveTrain drive;
